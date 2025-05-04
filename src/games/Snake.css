@@ -1,0 +1,103 @@
+/* Snake.css */
+.snake-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.snake-board {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border: 2px solid #000; /* Optional: Tambahkan border pada papan */
+}
+
+.snake-row {
+  display: flex;
+}
+
+.snake-cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  background-color: #eee; /* Warna default sel */
+}
+
+.snake {
+  background-color: green; /* Warna badan ular */
+}
+
+.snake-head {
+  background-color: black; /* Warna kepala ular */
+}
+
+.food {
+  background-color: red;
+}
+
+.game-over {
+  position: absolute; /* Membuat overlay */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Memusatkan overlay */
+  background-color: rgba(0, 0, 0, 0.7); /* Latar belakang semi-transparan */
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 10; /* Pastikan di atas papan */
+}
+
+.game-over h2 {
+  margin-bottom: 10px;
+}
+
+.final-score {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.reset-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  margin-top: 10px; /* Berikan sedikit jarak dari tulisan "Game Over" */
+}
+
+.reset-button:hover {
+  background-color: #d32f2f;
+}
+
+.snake-container h2 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.snake-container .instructions {
+  margin-bottom: 5px;
+  font-style: italic;
+  color: #777;
+}
+
+.snake-container h3 {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.score {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
