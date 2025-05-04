@@ -18,10 +18,17 @@ function shuffleArray(array) {
 }
 
 function Memory() {
-  const [cards, setCards] = useState(shuffleArray(cardSymbols));
+  const [cards, setCards] = useState([]);
   const [gameWon, setGameWon] = useState(false);
   const [flippedCards, setFlippedCards] = useState([]);
   const [disableClick, setDisableClick] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false); // State untuk kontrol visibilitas
+
+  useEffect(() => {
+    if (gameStarted) {
+      setCards(shuffleArray(cardSymbols));
+    }
+  }, [gameStarted]);
 
   useEffect(() => {
     // Cek jika semua kartu sudah matched
@@ -31,7 +38,7 @@ function Memory() {
   }, [cards]);
 
   const handleCardClick = (card) => {
-    if (disableClick || card.flipped || card.matched) return;
+    if (!gameStarted || disableClick || card.flipped || card.matched) return;
 
     const flipped = [...flippedCards, card];
     const updatedCards = cards.map((c) =>
@@ -68,31 +75,44 @@ function Memory() {
     setFlippedCards([]);
     setGameWon(false);
     setDisableClick(false);
+    setGameStarted(true); // Otomatis mulai game setelah reset
+  };
+
+  const handlePlayClick = () => {
+    setGameStarted(true);
   };
 
   return (
     <div className="memory-container">
       <h2>Memory Game</h2>
+      {!gameStarted ? (
+        <div className="game-info">
+          <div className="instructions">Klik tombol di bawah untuk memulai permainan.</div>
+          <div className="description">Temukan semua pasangan kartu yang cocok untuk memenangkan permainan ini!</div>
+          <button className="play-button" onClick={handlePlayClick}>Play</button>
+        </div>
+      ) : (
+        <div className="card-grid">
+          {cards.map((card) => (
+            <div
+              key={card.id}
+              className={`card ${card.flipped || card.matched ? "flipped" : ""}`}
+              onClick={() => handleCardClick(card)}
+            >
+              <div className="card-inner">
+                <div className="card-front">?</div>
+                <div className="card-back">{card.symbol}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
       {gameWon && (
         <div className="game-won-message">
           <h3>🎉 Game Selesai!</h3>
           <button onClick={resetGame}>Main Lagi</button>
         </div>
       )}
-      <div className="card-grid">
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            className={`card ${card.flipped || card.matched ? "flipped" : ""}`}
-            onClick={() => handleCardClick(card)}
-          >
-            <div className="card-inner">
-              <div className="card-front">?</div>
-              <div className="card-back">{card.symbol}</div>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
