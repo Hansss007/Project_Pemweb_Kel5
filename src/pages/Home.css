@@ -51,3 +51,36 @@
   .game-icon span {
     font-weight: bold;
   }
+
+  @media (max-width: 600px) {
+    .home-container {
+      padding-top: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    .games-list {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+  
+    .game-icon img {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .game-icon span {
+      font-size: 14px;
+      text-align: center;
+    }
+  
+    .welcome-text h1 {
+      font-size: 20px;
+    }
+  
+    .welcome-text p {
+      font-size: 14px;
+    }
+  }
+  
