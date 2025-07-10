@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db_name = 'a9_game';
+$db_name = 'leaderboard-api';
 $username = 'root';
 $password = '';
 

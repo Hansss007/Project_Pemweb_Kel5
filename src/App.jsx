@@ -10,6 +10,11 @@ import Snake from './games/Snake';
 import Memory from './games/Memory';
 import Minesweeper from './games/Minesweeper';
 import Game2048 from './games/Game2048';
+import Leaderboard from "./pages/Leaderboard";
+
+// Di dalam `<Routes>`
+
+
 
 
 function App() {
@@ -23,10 +28,12 @@ function App() {
             <li><Link to="/games">Games</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
+            <Link to="/leaderboard">Leaderboard</Link>
             <li><Link to="/dashboard">Dashboard</Link></li>
           </ul>
         </nav>
         <Routes>
+          <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/game/snake" element={<Snake />} />
           <Route path="/game/memory" element={<Memory />} />
           <Route path="/game/minesweeper" element={<Minesweeper />} />
